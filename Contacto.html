@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto | PetMatch</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      margin: 0; 
+      background: #f9f9f9; 
+      padding: 20px; 
+      color: #333;
+    }
+    header { 
+      background: #ff6b6b; 
+      color: #fff; 
+      padding: 20px; 
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .content {
+      max-width: 800px; 
+      margin: 0 auto; 
+      background: #fff; 
+      padding: 30px; 
+      border-radius: 8px; 
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2 { 
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+    }
+    h1 { 
+      font-size: 2.5em; 
+      margin: 0; 
+    }
+    h2 { 
+      font-size: 2em; 
+      color: #ff6b6b; 
+      margin-bottom: 20px; 
+    }
+    p { 
+      font-size: 1.1em; 
+      margin-bottom: 20px; 
+    }
+    form { 
+      display: flex; 
+      flex-direction: column; 
+    }
+    label { 
+      margin-bottom: 5px; 
+      font-weight: bold; 
+    }
+    input[type="text"], input[type="email"], textarea {
+      padding: 10px; 
+      margin-bottom: 15px; 
+      border: 1px solid #ddd; 
+      border-radius: 4px;
+    }
+    textarea { 
+      resize: vertical; 
+    }
+    button {
+      background: #ff6b6b; 
+      color: #fff; 
+      padding: 15px; 
+      border: none; 
+      border-radius: 4px; 
+      cursor: pointer; 
+      font-size: 1em;
+    }
+    button:hover { 
+      background: #e05555; 
+    }
+    a { 
+      color: #ff6b6b; 
+      text-decoration: none; 
+      font-weight: bold;
+    }
+    a:hover { 
+      text-decoration: underline; 
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Contacto</h1>
+  </header>
+  <div class="content">
+    <h2>Ponte en contacto con nosotros</h2>
+    <p>Si tienes preguntas, sugerencias o necesitas más información, por favor completa el siguiente formulario y nos pondremos en contacto contigo lo antes posible.</p>
+    <!-- Al enviar el formulario se redirige a "Contacto2.html" -->
+    <form action="Contacto2.html" method="post">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+      
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="mensaje">Mensaje:</label>
+      <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+      
+      <button type="submit">Enviar Mensaje</button>
+    </form>
+    <p><a href="index.html">← Volver a PetMatch</a></p>
+  </div>
+</body>
+</html>
+

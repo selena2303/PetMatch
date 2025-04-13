@@ -1,0 +1,477 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PetMatch - Encuentra a tu compañero ideal</title>
+  <style>
+    /* Estilos generales */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Cabecera y navegación */
+    header {
+      background: #ff6b6b;
+      color: #fff;
+      padding: 10px 20px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Logo en la esquina */
+    .logo {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 50px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8em;
+    }
+    nav {
+      background: #ff8b94;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px 0;
+    }
+    nav a {
+      color: #fff;
+      font-weight: bold;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #333;
+    }
+    /* Sección: Mascotas Destacadas */
+    .mascotas {
+      background: url('adoption-background.jpg') center/cover no-repeat;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .mascotas h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #000;
+    }
+    .mascotas p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #000;
+    }
+    /* Forzamos el color negro en la información de las mascotas */
+    .mascotas .card-content {
+      color: #000;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .card {
+      background: #fdfdfd;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      width: 300px;
+      margin: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 15px;
+      text-align: left;
+    }
+    .card-content h3 {
+      margin: 0;
+      color: #ff6b6b;
+    }
+    .card-content p {
+      font-size: 0.9em;
+      margin: 5px 0;
+    }
+    /* Secciones generales (resto de secciones) */
+    section {
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+    .features {
+      background: #fff;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .features h2 {
+      color: #ff6b6b;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    .step {
+      flex: 1 1 300px;
+      margin: 10px;
+      padding: 20px;
+      background: #ffecec;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .step h3 {
+      margin-bottom: 10px;
+      color: #d9534f;
+    }
+    /* Sección: Conecta con refugios - contenido ampliado */
+    .conecta {
+      background: #fff;
+      color: #333;
+      padding: 40px 40px;
+      text-align: left;
+      margin: 20px auto;
+      max-width: 1000px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .conecta h2 {
+      color: #ff6b6b;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .conecta p {
+      margin-bottom: 15px;
+    }
+    .conecta ul {
+      margin: 0 0 15px 20px;
+    }
+    /* Sección: Donaciones y Ayuda (cuadro rectangular) */
+    .donations {
+      background: #fff;
+      color: #333;
+      padding: 60px 40px;
+      text-align: center;
+      margin: 20px auto;
+      max-width: 1000px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .donations h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .donations p {
+      margin-bottom: 20px;
+    }
+    .donations .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .donations .btn {
+      background: #ff6b6b;
+      border: none;
+      padding: 15px 30px;
+      color: #fff;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .donations .btn:hover {
+      background: #e05555;
+    }
+    /* Sección: Testimonios (cuadro ligeramente más pequeño) */
+    .testimonials {
+      background: #fff;
+      margin: 20px auto; /* redujimos el margen */
+      padding: 60px;     /* redujimos el padding */
+      border-radius: 8px;/* menor border-radius */
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 960px;
+    }
+    .testimonials h2 {
+      color: #ff6b6b;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .testimonials p {
+      margin: 10px 0;
+      font-size: 0.95em;
+    }
+    /* Sección: Clínica Veterinaria (cuadro rectangular con dos columnas) */
+    .clinica-veterinaria {
+      background: #fff;
+      padding: 60px 40px;
+      margin: 20px auto;
+      max-width: 1000px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .clinica-veterinaria .info {
+      flex: 1;
+      text-align: left;
+    }
+    .clinica-veterinaria h2 {
+      color: #ff6b6b;
+      margin-bottom: 20px;
+    }
+    .clinica-veterinaria p {
+      margin: 10px 0;
+    }
+    .clinica-veterinaria .imagen {
+      flex: 1;
+      text-align: center;
+    }
+    .clinica-veterinaria .imagen img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+    /* Pie de página */
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .steps {
+        flex-direction: column;
+        align-items: center;
+      }
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .logo {
+        position: static;
+        transform: none;
+        margin-bottom: 10px;
+      }
+      .donations .buttons {
+        flex-direction: column;
+      }
+      .clinica-veterinaria {
+        flex-direction: column;
+      }
+      .conecta {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Cabecera con Logo -->
+  <header>
+    <img src="logo.jpg" alt="Logo PetMatch" class="logo">
+    <h1>PetMatch - Encuentra a tu compañero ideal</h1>
+  </header>
+  
+  <!-- Menú de navegación -->
+  <nav>
+    <a href="#como-funciona">¿Cómo funciona?</a>
+    <a href="#conecta">Conecta con refugios</a>
+    <a href="#mascotas">Mascotas Destacadas</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#donaciones">Donaciones y ayuda</a>
+    <a href="#clinica-veterinaria">Clínica Veterinaria</a>
+  </nav>
+  
+  <!-- Sección: Mascotas Destacadas -->
+  <section id="mascotas" class="mascotas">
+    <h2>Mascotas Destacadas</h2>
+    <p>Conoce a las mascotas que buscan un hogar. ¡Descubre tu próximo mejor amigo!</p>
+    <div class="cards">
+      <!-- Cada tarjeta se envuelve en un enlace que redirige a una página con el nombre del perro -->
+      <!-- Card 1: Max -->
+      <a href="Max.html">
+        <div class="card">
+          <img src="Labrador.webp" alt="Labrador webp">
+          <div class="card-content">
+            <h3>Max</h3>
+            <p><strong>Raza:</strong> Labrador Retriever</p>
+            <p><strong>Edad:</strong> 3 años</p>
+            <p>Un compañero leal, lleno de energía y amor para dar.</p>
+          </div>
+        </div>
+      </a>
+      <!-- Card 2: Luna -->
+      <a href="Luna.html">
+        <div class="card">
+          <img src="husky.jpeg" alt="Husky jpeg">
+          <div class="card-content">
+            <h3>Luna</h3>
+            <p><strong>Raza:</strong> Husky Siberiano</p>
+            <p><strong>Edad:</strong> 2 años</p>
+            <p>Destaca por su belleza y su espíritu aventurero, ideal para familias activas.</p>
+          </div>
+        </div>
+      </a>
+      <!-- Card 3: Blaki -->
+      <a href="Blaki.html">
+        <div class="card">
+          <img src="beagle.jpeg" alt="Beagle jpeg">
+          <div class="card-content">
+            <h3>Blaki</h3>
+            <p><strong>Raza:</strong> Beagle</p>
+            <p><strong>Edad:</strong> 4 años</p>
+            <p>Curioso, juguetón y perfecto para hogares llenos de cariño.</p>
+          </div>
+        </div>
+      </a>
+      <!-- Card 4: Devon -->
+      <a href="Devon.html">
+        <div class="card">
+          <img src="Pastor Aleman.jpeg" alt="Pastor Alemán jpeg">
+          <div class="card-content">
+            <h3>Devon</h3>
+            <p><strong>Raza:</strong> Pastor Alemán</p>
+            <p><strong>Edad:</strong> 5 años</p>
+            <p>Inteligente y protector, ideal para hogares que buscan seguridad y compañía.</p>
+          </div>
+        </div>
+      </a>
+      <!-- Card 5: Kira -->
+      <a href="Kira.html">
+        <div class="card">
+          <img src="Golden.jpeg" alt="Golden Retriever">
+          <div class="card-content">
+            <h3>Kira</h3>
+            <p><strong>Raza:</strong> Golden Retriever</p>
+            <p><strong>Edad:</strong> 1 año</p>
+            <p>Tierna, obediente y perfecta para convivir con niños pequeños.</p>
+          </div>
+        </div>
+      </a>
+      <!-- Card 6: Rocky -->
+      <a href="Rocky.html">
+        <div class="card">
+          <img src="Chihuahua.jpeg" alt="Chihuahua">
+          <div class="card-content">
+            <h3>Rocky</h3>
+            <p><strong>Raza:</strong> Chihuahua</p>
+            <p><strong>Edad:</strong> 2 años</p>
+            <p>Pequeño, valiente y con una gran personalidad, ideal para departamentos.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+  
+  <!-- Sección: ¿Cómo funciona? -->
+  <section id="como-funciona" class="features container">
+    <h2>¿Cómo funciona?</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>Swipe para encontrar</h3>
+        <p>Desliza para descubrir la mascota que mejor se adapta a ti.</p>
+      </div>
+      <div class="step">
+        <h3>Conexión instantánea</h3>
+        <p>Comunícate a través de nuestro chat seguro y verificado.</p>
+      </div>
+      <div class="step">
+        <h3>Verificación y confianza</h3>
+        <p>Aseguramos que cada conexión sea auténtica y segura.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Sección: Conecta con refugios -->
+  <section id="conecta" class="features container conecta">
+    <h2>Conecta con refugios</h2>
+    <p>En PetMatch colaboramos estrechamente con múltiples refugios para:</p>
+    <ul>
+      <li>Organizar visitas guiadas y conocer de primera mano a las mascotas.</li>
+      <li>Ofrecer asesoría personalizada durante el proceso de adopción.</li>
+      <li>Mantener actualizada la información de los refugios y sus necesidades.</li>
+      <li>Fomentar eventos y campañas de concientización para promover la adopción responsable.</li>
+    </ul>
+    <p>Si eres un refugio o rescatista, contáctanos para formar parte de nuestra red y juntos ayudar a más animales.</p>
+  </section>
+  
+  <!-- Sección: Testimonios (cuadro ligeramente más pequeño) -->
+  <section id="testimonios" class="testimonials container">
+    <h2>Testimonios</h2>
+    <p><strong>Ana Martínez:</strong> "Gracias a PetMatch encontré a mi mejor amigo peludo. ¡La experiencia fue increíble!"</p>
+    <p><strong>Carlos Ramírez:</strong> "El sistema es muy fácil de usar y la atención es excelente. ¡Recomiendo PetMatch a todos!"</p>
+    <p><strong>Laura Gómez:</strong> "Adoptar a través de PetMatch cambió mi vida; ahora mi familia tiene un miembro muy especial."</p>
+    <p><strong>José Herrera:</strong> "La transparencia y seguridad en el proceso de adopción me dieron la confianza que necesitaba."</p>
+  </section>
+  
+  <!-- Sección: Donaciones y Ayuda (cuadro rectangular) -->
+  <section id="donaciones" class="donations container">
+    <h2>Donaciones y Ayuda</h2>
+    <p>Con tu apoyo, podemos ayudar a más animales a encontrar un hogar. Elige la forma en la que deseas colaborar:</p>
+    <div class="buttons">
+      <button class="btn" onclick="window.location.href='Donar.html'">Donar</button>
+      <button class="btn" onclick="window.location.href='Alimento.html'">Alimento</button>
+      <button class="btn" onclick="window.location.href='Fondos.html'">Fondos</button>
+    </div>
+    <p style="margin-top:20px; text-align: center; font-size: 0.9em;">
+      Tu contribución puede ayudar a cubrir gastos médicos, alimentación, ropa, casitas, camas y otros cuidados esenciales para nuestras mascotas. ¡Gracias por ser parte del cambio!
+    </p>
+  </section>
+  
+  <!-- Sección: Clínica Veterinaria (cuadro rectangular con imagen y texto en columnas) -->
+  <section id="clinica-veterinaria" class="clinica-veterinaria">
+    <div class="info">
+      <h2>Clínica Veterinaria PetMatch</h2>
+      <p><strong>Responsable:</strong> Dr. Veronica Skyler</p>
+      <p>"Chequeos gratuitos para mascotas adoptadas."</p>
+      <p>"Vacunación y esterilización a bajo costo."</p>
+      <p>"Emergencias 24/7 con convenio para adoptantes."</p>
+      <p>Tel: +52 637-140-6112</p>
+      <p>Email: vet@petmatch.com</p>
+    </div>
+    <div class="imagen">
+      <img src="veterinario.jpeg" alt="Veterinario atendiendo mascotas">
+    </div>
+  </section>
+  
+  <!-- Pie de página -->
+  <footer>
+    <p>&copy; 2025 PetMatch. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

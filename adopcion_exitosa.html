@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gracias por tu solicitud | PetMatch</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 40px; text-align: center; }
+    .message {
+      background: #fff; padding: 40px; max-width: 600px; margin: auto;
+      border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 { color: #ff6b6b; }
+    p { font-size: 1.2em; margin-top: 20px; }
+    a { display: inline-block; margin-top: 30px; color: #ff6b6b; text-decoration: none; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="message">
+    <h1 id="titulo-gracias">¡Gracias por tu interés!</h1>
+    <p>Hemos recibido tu solicitud y nuestro equipo evaluará tu perfil para asegurar que eres compatible con nuestro amigo peludo.</p>
+    <p>Nos pondremos en contacto contigo en los próximos días.</p>
+    <a href="index.html">← Volver a PetMatch</a>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const nombrePerro = params.get("perro") || "tu nuevo amigo";
+  document.getElementById("titulo-gracias").textContent = `¡Gracias por tu interés en ${nombrePerro}!`;
+</script>
+
+  </div>
+</body>
+</html>

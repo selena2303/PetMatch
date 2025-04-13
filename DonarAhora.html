@@ -1,0 +1,85 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Donar Ahora | PetMatch</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      margin: 0; 
+      background: #f9f9f9; 
+      padding: 20px; 
+      color: #333;
+    }
+    header {
+      background: #ff6b6b; 
+      color: #fff; 
+      padding: 20px; 
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .content {
+      max-width: 800px; 
+      margin: 0 auto; 
+      background: #fff; 
+      padding: 30px; 
+      border-radius: 8px; 
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    h1 { font-size: 2.5em; margin: 0; }
+    h2 { font-size: 2em; color: #ff6b6b; margin-bottom: 20px; }
+    p { font-size: 1.1em; margin-bottom: 20px; }
+    form { display: flex; flex-direction: column; }
+    label { margin-bottom: 5px; font-weight: bold; }
+    input[type="text"], input[type="email"], input[type="number"], input[type="tel"] {
+      padding: 10px; 
+      margin-bottom: 15px; 
+      border: 1px solid #ddd; 
+      border-radius: 4px;
+    }
+    button {
+      background: #ff6b6b; 
+      color: #fff; 
+      padding: 15px; 
+      border: none; 
+      border-radius: 4px; 
+      cursor: pointer; 
+      font-size: 1em;
+    }
+    button:hover { background: #e05555; }
+    a { color: #ff6b6b; text-decoration: none; font-weight: bold; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Donar Ahora</h1>
+  </header>
+  <div class="content">
+    <h2>Contribuye con tu donación</h2>
+    <p>Tu aporte en efectivo es esencial para ayudar a proporcionar atención médica, alimentos y refugio a las mascotas necesitadas. Por favor, completa el formulario a continuación para realizar tu donación de forma segura.</p>
+    
+    <form action="DonarAhora2.html" method="post">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+      
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="monto">Monto a donar (MXN):</label>
+      <input type="number" id="monto" name="monto" min="1" required>
+
+      <label for="tarjeta">Número de tarjeta:</label>
+      <input type="tel" id="tarjeta" name="tarjeta" pattern="[0-9]{16}" maxlength="16" placeholder="Ej. 1234567812345678" required>
+      
+      <button type="submit">Realizar Donación</button>
+    </form>
+    
+    <p><a href="index.html">← Volver a PetMatch</a></p>
+  </div>
+</body>
+</html>
